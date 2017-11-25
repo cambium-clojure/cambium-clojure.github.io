@@ -1,5 +1,5 @@
 theme: jekyll-theme-cayman
 title: Cambium
-description: Structured logging, in other words 'Logs as data', for Clojure
+description: Structured logging (in other words 'Logs as data') for Clojure
 url: https://cambium-clojure.github.io/
 timezone: Asia/Kolkata
