@@ -1,0 +1,5 @@
+theme: jekyll-theme-slate
+title: Cambium
+description: Structured logging for Clojure
+url: https://cambium-clojure.github.io/
+timezone: Asia/Kolkata
