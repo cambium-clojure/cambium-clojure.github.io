@@ -22,7 +22,7 @@ A namespace based logger uses the namespace where the log event is originated as
 (log/info "this is a log message")                                          ; simple message logging
 (log/info {:latency-ms 331 :module "registration"} "App registered")        ; context and message
 (log/debug {:module "order-processing"} "sequence-id verified")
-(log/error {:module "user-feedback"} exception "Email notification failed") ; context, exception and message
+(log/error {:module "user-feedback"} exception "Email notification failed") ; context, exception, msg
 ```
 
 Available log levels: `trace`, `debug`, `info`, `warn`, `error`, `fatal`.
@@ -36,7 +36,7 @@ You can define custom loggers (with predefined logger name) that you can use fro
 (log/deflogger txn-log "TXN-LOG" :info :fatal)
 
 (metrics {:latency-ms 331 :module "registration"} "app.registration.success") ; context and message
-(txn-log {:module "order-processing"} exception "Stock unavailable")          ; context, exception and message
+(txn-log {:module "order-processing"} exception "Stock unavailable")          ; context, exception, msg
 (txn-log "Order processed")                                                   ; simple message logging
 ```
 
@@ -52,7 +52,7 @@ Value based context can be propagated as follows:
   ...)
 
 ;; wrap an existing fn with specified context
-(log/wrap-logging-context {:user-id "X1234"} user-assign-job)  ; creates a wrapped fn inheriting specified context
+(log/wrap-logging-context {:user-id "X1234"} user-assign-job)  ; creates a wrapped fn
 ```
 
 #### MDC propagation
@@ -69,7 +69,7 @@ new map. Also, no conversion is applied to MDC; they are required to have string
 
 ;; wrap an existing fn with specified context
 (mlog/wrap-raw-mdc user-assign-job)  ; creates a wrapped fn that inherits current context
-(mlog/wrap-raw-mdc {"userid" "X1234"} user-assign-job)  ; creates a wrapped fn that inherits specified context
+(mlog/wrap-raw-mdc {"userid" "X1234"} user-assign-job)  ; creates wrapped fn inheriting specified context
 ```
 
 The most common use of MDC propagation is to pass the logging context to child threads in a concurrent scenario.
