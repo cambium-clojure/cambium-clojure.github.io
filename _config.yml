@@ -1,4 +1,4 @@
-theme: jekyll-theme-architect
+theme: jekyll-theme-midnight
 title: Cambium
 description: Structured logging for Clojure
 url: https://cambium-clojure.github.io/
