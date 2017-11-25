@@ -49,7 +49,7 @@ Include the following dependencies in your project:
     <!-- encoders are assigned the type
          ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
     <encoder>
-      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg {%mdc}%n</pattern>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg { %mdc }%n</pattern>
     </encoder>
   </appender>
 
