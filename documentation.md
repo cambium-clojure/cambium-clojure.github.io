@@ -35,9 +35,9 @@ You can define custom loggers (with predefined logger name) that you can use fro
 (log/deflogger metrics "METRICS")
 (log/deflogger txn-log "TXN-LOG" :info :fatal)
 
-(metrics {:latency-ms 331 :module "registration"} "app.registration.success") ; context and message
-(txn-log {:module "order-processing"} exception "Stock unavailable")          ; context, exception, msg
-(txn-log "Order processed")                                                   ; simple message logging
+(metrics {:latency-ms 331 :module "registration"} "app.register.success") ; context and message
+(txn-log {:module "order-processing"} exception "Stock unavailable")      ; context, exception, msg
+(txn-log "Order processed")                                               ; simple message logging
 ```
 
 ### Context propagation
@@ -69,7 +69,7 @@ new map. Also, no conversion is applied to MDC; they are required to have string
 
 ;; wrap an existing fn with specified context
 (mlog/wrap-raw-mdc user-assign-job)  ; creates a wrapped fn that inherits current context
-(mlog/wrap-raw-mdc {"userid" "X1234"} user-assign-job)  ; creates wrapped fn inheriting specified context
+(mlog/wrap-raw-mdc {"userid" "X1234"} user-assign-job)  ; creates wrapped fn
 ```
 
 The most common use of MDC propagation is to pass the logging context to child threads in a concurrent scenario.
