@@ -42,6 +42,8 @@ Include the following dependencies in your project:
 [cambium/cambium.logback.core "0.4.0"]
 ```
 
+Then, create a file `resources/logback.xml` with the following content:
+
 ```xml
 <configuration>
 
@@ -59,6 +61,8 @@ Include the following dependencies in your project:
 
 </configuration>
 ```
+
+In your application, log events as data:
 
 ```clojure
 (ns myapp.main
