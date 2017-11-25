@@ -1,4 +1,4 @@
-theme: jekyll-theme-slate
+theme: jekyll-theme-dinky
 title: Cambium
 description: Structured logging for Clojure
 url: https://cambium-clojure.github.io/
