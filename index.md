@@ -46,7 +46,6 @@ Then, create a file `resources/logback.xml` with the following content:
 
 ```xml
 <configuration>
-
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <!-- encoders are assigned the type
          ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
@@ -54,11 +53,9 @@ Then, create a file `resources/logback.xml` with the following content:
       <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg { %mdc }%n</pattern>
     </encoder>
   </appender>
-
   <root level="debug">
     <appender-ref ref="STDOUT" />
   </root>
-
 </configuration>
 ```
 
@@ -91,7 +88,6 @@ Create `resources/logback.xml` file in your project with the following content:
 
 ```xml
 <configuration>
-
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
           <layout class="cambium.logback.json.FlatJsonLayout">
@@ -106,11 +102,9 @@ Create `resources/logback.xml` file in your project with the following content:
           </layout>
         </encoder>
     </appender>
-
     <root level="debug">
       <appender-ref ref="STDOUT" />
     </root>
-
 </configuration>
 ```
 
