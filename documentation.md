@@ -78,7 +78,7 @@ The most common use of MDC propagation is to pass the logging context to child t
 ## Cambium codec
 
 A Cambium codec governs how the log attributes are encoded and decoded before they are effectively sent to a log
-layout. A codec constitutes the following:
+appender. A codec constitutes the following:
 
 | Var in `cambium.codec` ns     | Type               | Description                                 |
 |-------------------------------|--------------------|---------------------------------------------|
@@ -87,7 +87,7 @@ layout. A codec constitutes the following:
 | cambium.codec/stringify-val   | (fn [v]) -> String | Encodes log attribute value as string       |
 | cambium.codec/destringify-val | (fn [s]) -> value  | Decodes log attribute from string form      |
 
-Note: You need only one codec implementation in a project.
+**Note:** _You need only one codec implementation in a project._
 
 Cambium comes with two codec modules, `cambium/cambium.codec-simple` and `cambium/cambium.codec-cheshire`. While
 `codec-simple` is a very simple codec that converts everything to string, codec-cheshire is a nesting-aware codec
@@ -96,7 +96,7 @@ that preserves types as long as they are valid [JSON](https://en.wikipedia.org/w
 ### Nested context
 
 Sometimes context values may be nested and need manipulation. Cambium requires nesting-aware codec for dealing with
-nested context. Almost all nesting-aware backends need to be configured to use the codec before logging events:
+nested context. Almost all nesting-aware backends need to be configured to use the codec before logging any events:
 
 ```clojure
 (require '[cambium.codec :as codec])    ; assuming we have codec-cheshire
@@ -124,17 +124,18 @@ Cambium modules for Logback have add-on features described in the sections below
 
 ### Overriding log level at runtime
 
-Logback-bundle provides support for overriding log levels at runtime using a strategy based TurboFilter.
+The `cambium.logback.core` and `cambium.logback.json` modules provide support for overriding log levels at runtime
+using a strategy based [TurboFilter](https://logback.qos.ch/manual/filters.html#TurboFilter).
 
 #### One time setup
 
 Add the following Logback configuration (or equivalent) to logback.xml:
 
 ```xml
-<turboFilter class="logback_bundle.core.StrategyTurboFilter">
+<turboFilter class="cambium.logback.core.StrategyTurboFilter">
   <name>mdcStrategy</name>
 </turboFilter>
-<turboFilter class="logback_bundle.core.StrategyTurboFilter">
+<turboFilter class="cambium.logback.core.StrategyTurboFilter">
   <name>multiStrategy</name>
 </turboFilter>
 ```
@@ -161,7 +162,7 @@ Configure strategy:
 
 (import '[org.slf4j MDC])
 
-(MDC/put "forcelevel" "debug")  ; force new level to be considered DEBUG
+(MDC/put "forcelevel" "debug")  ; force new level to be DEBUG
 (log/debug "This event will be logged overriding any existing INFO/WARN/ERROR level")
 ```
 
@@ -174,7 +175,7 @@ You can remove log level overrides at any time:
 (strategy/remove-strategy! "multiStrategy")
 ```
 
-### Configuring logback_bundle.json.FlatJsonLayout
+### Configuring `cambium.logback.json.FlatJsonLayout`
 
 The `cambium.logback.json.FlatJsonLayout` class is designed to accommodate customizations to preserve types/nesting
 of MDC attributes and wholesale MDC transformation.
