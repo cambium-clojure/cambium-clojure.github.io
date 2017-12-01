@@ -48,6 +48,20 @@ configured to use the chosen Cambium codec for the logs to appear at some destin
 the logging backend. Hence, the logging backend must support SLF4j MDC and should be configured to use the codec.
 The Cambium codec is also used to overcome the lack of builtin support in SLF4j MDC for nested data.
 
+#### MDC is mutable and thread-local!
+
+The SLF4j MDC is a thread-local map of string keys to string values. This thread-local map is also mutable! Cambium
+wraps the MDC in a way such that the required mutation is carried out for only as long as required, and then the
+original value is automatically restored. Since this temporary mutation is thread-local, it does not impact other
+concurrent code accessing the MDC.
+
+Thread-locality of MDC prevents its propagation to concurrently running code. For example, how do you carry the
+logging context (MDC) into `(future (code-needing-logging-context))`? Such carry-forwarding of context needs to be
+explicitly managed. Cambium has support for explicitly carrying over context.
+
+
+### Backend integration
+
 Cambium comes with [Logback](https://logback.qos.ch/) backend modules for SLF4j, named `cambium/cambium.logback.*`.
 Cambium does not provide any support for configuring or initializing Logback, though it includes all dependencies
 required to do so.
