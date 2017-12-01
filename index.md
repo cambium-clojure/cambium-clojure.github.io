@@ -74,6 +74,22 @@ In your application, log events as data:
   )
 ```
 
+#### Text Log Output
+
+```
+$ lein run foo 10
+18:56:42.054 [main] INFO  myapp.main - Application started {  }
+18:56:42.060 [main] INFO  myapp.main - Arguments received { args=["foo" "10"], argc=2 }
+```
+
+When you run the same command without creating the `resources/logback.xml` file:
+
+```
+$ lein run foo 10
+18:57:48.836 [main] INFO myapp.main - Application started
+18:57:48.842 [main] INFO myapp.main - Arguments received
+```
+
 ### Configure application for JSON (and Text) logs
 
 Include the following dependencies in your project:
@@ -126,6 +142,29 @@ Now before your application logs any event, configure the SLF4j backend to use t
   )
 ```
 
+#### JSON Log Output
+
+```json
+$ lein run foo 10
+{
+  "timestamp" : "2017-12-01T13:31:42.265Z",
+  "level" : "INFO",
+  "thread" : "main",
+  "logger" : "myapp.main",
+  "message" : "Application started",
+  "context" : "default"
+}
+{
+  "timestamp" : "2017-12-01T13:31:42.323Z",
+  "level" : "INFO",
+  "thread" : "main",
+  "args" : [ "foo", "10" ],
+  "argc" : 2,
+  "logger" : "myapp.main",
+  "message" : "Arguments received",
+  "context" : "default"
+}
+```
 
 ## License
 
