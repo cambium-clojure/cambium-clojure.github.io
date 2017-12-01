@@ -74,7 +74,9 @@ In your application, log events as data:
   )
 ```
 
-#### Text Log Output
+#### Text log output
+
+The log output comes to the console when we run the app:
 
 ```
 $ lein run foo 10
@@ -142,7 +144,9 @@ Now before your application logs any event, configure the SLF4j backend to use t
   )
 ```
 
-#### JSON Log Output
+#### JSON log output
+
+The log output comes to the console:
 
 ```json
 $ lein run foo 10
@@ -165,6 +169,7 @@ $ lein run foo 10
   "context" : "default"
 }
 ```
+
 
 ## License
 
