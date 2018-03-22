@@ -74,6 +74,19 @@ new map. Also, no conversion is applied to MDC; they are required to have string
 
 The most common use of MDC propagation is to pass the logging context to child threads in a concurrent scenario.
 
+#### Caller metadata
+
+Starting with Cambium `0.9.2`, by default all log events include the MDC/context attributes `ns`, `line` and `column`.
+This metadata is obtained at compile time, hence the overhead is negligible. However, you may override this default
+behavior by setting system property `cambium.caller.meta.in.context` to `false`. For example, the following command
+would disable caller metadata in all Cambium log events:
+
+```
+java -Dcambium.caller.meta.in.context=false -jar foo-bar.jar
+```
+
+See also: `cambium.core/caller-meta-in-context?`
+
 
 ## Cambium codec
 

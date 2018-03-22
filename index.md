@@ -15,9 +15,9 @@ _**Cambium requires Clojure 1.5 or higher, Java 6 or higher.**_
 |-----------------------------------------------------------------------------------------|--------------------------------------|----------------------------------------------|-----------------------------------------------------------------|
 | Module                                                                                  | Description                          | Clojars artifact                             | Dependencies                                                    |
 |-----------------------------------------------------------------------------------------|--------------------------------------|----------------------------------------------|-----------------------------------------------------------------|
-| [cambium.core](https://github.com/cambium-clojure/cambium.core)                         | SLF4j based core API implementation  | `[cambium/cambium.core             "0.9.1"]` | [SLF4j](https://www.slf4j.org/) Mapped Diagnostic Context (MDC) |
-| [cambium.codec-simple](https://github.com/cambium-clojure/cambium.codec-simple)         | Simple, non-nested codec             | `[cambium/cambium.codec-simple     "0.9.1"]` | [tools.cli](https://github.com/clojure/tools.cli)               |
-| [cambium.codec-cheshire](https://github.com/cambium-clojure/cambium.codec-cheshire)     | Cheshire based nesting-capable codec | `[cambium/cambium.codec-cheshire   "0.9.1"]` | [Cheshire](https://github.com/dakrone/cheshire)                 |
+| [cambium.core](https://github.com/cambium-clojure/cambium.core)                         | SLF4j based core API implementation  | `[cambium/cambium.core             "0.9.2"]` | [SLF4j](https://www.slf4j.org/) Mapped Diagnostic Context (MDC) |
+| [cambium.codec-simple](https://github.com/cambium-clojure/cambium.codec-simple)         | Simple, non-nested codec             | `[cambium/cambium.codec-simple     "0.9.2"]` | [tools.cli](https://github.com/clojure/tools.cli)               |
+| [cambium.codec-cheshire](https://github.com/cambium-clojure/cambium.codec-cheshire)     | Cheshire based nesting-capable codec | `[cambium/cambium.codec-cheshire   "0.9.2"]` | [Cheshire](https://github.com/dakrone/cheshire)                 |
 
 
 ### Backend: Logback
@@ -25,9 +25,9 @@ _**Cambium requires Clojure 1.5 or higher, Java 6 or higher.**_
 |-----------------------------------------------------------------------------------------|--------------------------------------|----------------------------------------------|-----------------------------------------------------------------|
 | Module                                                                                  | Description                          | Clojars artifact                             | Dependencies                                                    |
 |-----------------------------------------------------------------------------------------|--------------------------------------|----------------------------------------------|-----------------------------------------------------------------|
-| [cambium.logback.core](https://github.com/cambium-clojure/cambium.logback.core)         | Core Logback backend                 | `[cambium/cambium.logback.core     "0.4.1"]` | [Logback](https://logback.qos.ch/)                              |
-| [cambium.logback.json](https://github.com/cambium-clojure/cambium.logback.json)         | JSON Logback backend                 | `[cambium/cambium.logback.json     "0.4.1"]` | [Jackson](https://github.com/FasterXML/jackson)                 |
-| [cambium.logback.rabbitmq](https://github.com/cambium-clojure/cambium.logback.rabbitmq) | RabbitMQ appender for Logback        | `[cambium/cambium.logback.rabbitmq "0.4.1"]` | [RabbitMQ client](https://www.rabbitmq.com/java-client.html)    |
+| [cambium.logback.core](https://github.com/cambium-clojure/cambium.logback.core)         | Core Logback backend                 | `[cambium/cambium.logback.core     "0.4.2"]` | [Logback](https://logback.qos.ch/)                              |
+| [cambium.logback.json](https://github.com/cambium-clojure/cambium.logback.json)         | JSON Logback backend                 | `[cambium/cambium.logback.json     "0.4.2"]` | [Jackson](https://github.com/FasterXML/jackson)                 |
+| [cambium.logback.rabbitmq](https://github.com/cambium-clojure/cambium.logback.rabbitmq) | RabbitMQ appender for Logback        | `[cambium/cambium.logback.rabbitmq "0.4.2"]` | [RabbitMQ client](https://www.rabbitmq.com/java-client.html)    |
 
 
 ## Quickstart
@@ -37,9 +37,9 @@ _**Cambium requires Clojure 1.5 or higher, Java 6 or higher.**_
 Include the following dependencies in your project:
 
 ```clojure
-[cambium/cambium.core         "0.9.1"]
-[cambium/cambium.codec-simple "0.9.1"]
-[cambium/cambium.logback.core "0.4.1"]
+[cambium/cambium.core         "0.9.2"]
+[cambium/cambium.codec-simple "0.9.2"]
+[cambium/cambium.logback.core "0.4.2"]
 ```
 
 Then, create a file `resources/logback.xml` with the following content:
@@ -80,8 +80,8 @@ The log output comes to the console when we run the app:
 
 ```
 $ lein run foo 10
-18:56:42.054 [main] INFO  myapp.main - Application started {  }
-18:56:42.060 [main] INFO  myapp.main - Arguments received { args=["foo" "10"], argc=2 }
+18:56:42.054 [main] INFO  myapp.main - Application started { ns=myapp.main, line=8, column=3 }
+18:56:42.060 [main] INFO  myapp.main - Arguments received { args=["foo" "10"], argc=2, ns=myapp.main, line=9, column=3 }
 ```
 
 When you run the same command without creating the `resources/logback.xml` file:
@@ -97,9 +97,9 @@ $ lein run foo 10
 Include the following dependencies in your project:
 
 ```clojure
-[cambium/cambium.core           "0.9.1"]
-[cambium/cambium.codec-cheshire "0.9.1"]
-[cambium/cambium.logback.json   "0.4.1"]
+[cambium/cambium.core           "0.9.2"]
+[cambium/cambium.codec-cheshire "0.9.2"]
+[cambium/cambium.logback.json   "0.4.2"]
 ```
 
 Create `resources/logback.xml` file in your project with the following content:
@@ -154,6 +154,9 @@ $ lein run foo 10
   "timestamp" : "2017-12-01T13:31:42.265Z",
   "level" : "INFO",
   "thread" : "main",
+  "ns" : "myapp.main",
+  "line" : 12,
+  "column" : 3,
   "logger" : "myapp.main",
   "message" : "Application started",
   "context" : "default"
@@ -164,6 +167,9 @@ $ lein run foo 10
   "thread" : "main",
   "args" : [ "foo", "10" ],
   "argc" : 2,
+  "ns" : "myapp.main",
+  "line" : 13,
+  "column" : 3,
   "logger" : "myapp.main",
   "message" : "Arguments received",
   "context" : "default"
@@ -173,7 +179,7 @@ $ lein run foo 10
 
 ## License
 
-Copyright © 2017 Shantanu Kumar (kumar.shantanu@gmail.com, shantanu.kumar@concur.com)
+Copyright © 2017-2018 Shantanu Kumar (kumar.shantanu@gmail.com, shantanu.kumar@concur.com)
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
