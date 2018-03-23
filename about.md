@@ -6,9 +6,9 @@ title: About Cambium - Structured logging for Clojure
 
 ## Rationale
 
-Log messages are quite useful for human consumption but they are not easily machine parseable. It is machine parsing
-of log event data that makes them many times more valuable, especially in the age of information overload. Consider a
-log message and the same information as a structured log event:
+Log messages are quite useful for human consumption but they are not easily machine parseable for further analysis.
+It is machine parsing of log event data that makes them many times more valuable, especially in this age of information
+overload. Consider a log message and the same information as a structured log event:
 
 ```clojure
 "Order placed vide AXO/41294 with AcmeCorp for part number F-39942, quantity 5 pairs"
@@ -23,7 +23,7 @@ log message and the same information as a structured log event:
  :denomination "pair"}
 ```
 
-Data is a first class concept in Clojure - our logs should be the same. Structured logging means logs are first class
+Data is a first class concept in Clojure - our logs should be the same. Structured logging means logs as first class
 data.
 
 
