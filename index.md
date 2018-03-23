@@ -16,7 +16,7 @@ _**Cambium requires Clojure 1.5 or higher, Java 6 or higher.**_
 | Module                                                                                  | Description                          | Clojars artifact                             | Dependencies                                                    |
 |-----------------------------------------------------------------------------------------|--------------------------------------|----------------------------------------------|-----------------------------------------------------------------|
 | [cambium.core](https://github.com/cambium-clojure/cambium.core)                         | SLF4j based core API implementation  | `[cambium/cambium.core             "0.9.2"]` | [SLF4j](https://www.slf4j.org/) Mapped Diagnostic Context (MDC) |
-| [cambium.codec-simple](https://github.com/cambium-clojure/cambium.codec-simple)         | Simple, non-nested codec             | `[cambium/cambium.codec-simple     "0.9.2"]` | [tools.cli](https://github.com/clojure/tools.cli)               |
+| [cambium.codec-simple](https://github.com/cambium-clojure/cambium.codec-simple)         | Simple, non-nested codec             | `[cambium/cambium.codec-simple     "0.9.2"]` | |
 | [cambium.codec-cheshire](https://github.com/cambium-clojure/cambium.codec-cheshire)     | Cheshire based nesting-capable codec | `[cambium/cambium.codec-cheshire   "0.9.2"]` | [Cheshire](https://github.com/dakrone/cheshire)                 |
 
 
