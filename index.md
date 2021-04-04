@@ -179,7 +179,7 @@ $ lein run foo 10
 
 ## License
 
-Copyright © 2017-2020 [Shantanu Kumar](https://github.com/kumarshantanu)
+Copyright © 2017-2021 [Shantanu Kumar](https://github.com/kumarshantanu)
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
