@@ -10,6 +10,7 @@ title: Cambium Documentation - Structured logging for Clojure
 
 ```clojure
 (require '[cambium.core :as log])
+(require '[cambium.codec.util :as util])
 (require '[cambium.mdc  :as mlog])
 ```
 
@@ -73,6 +74,24 @@ new map. Also, no conversion is applied to MDC; they are required to have string
 ```
 
 The most common use of MDC propagation is to pass the logging context to child threads in a concurrent scenario.
+
+#### Redacting context attributes
+
+`[cambium.core "1.1.0"]` added context transformation support, which is no-op by default.
+You can setup context-filtering for various use cases - see example below:
+
+```clojure
+(alter-var-root #'cambium.core/transform-context
+  (fn [_]
+    (fn [context]
+      (-> context
+        (dissoc :password :email)                 ; redact sensitive attributes
+        (util/dissoc-in [:config :db :jdbc-url])  ; also from nested context
+        (assoc :app-version "1.16.202")))))
+```
+
+Context filtering is applied every time you set context. You should weigh the performance
+overhead carefully for this operation.
 
 #### Caller metadata
 
