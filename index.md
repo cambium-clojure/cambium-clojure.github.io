@@ -15,7 +15,7 @@ _**Cambium requires Clojure 1.6 or higher, Java 6 or higher.**_
 |-----------------------------------------------------------------------------------------|--------------------------------------|----------------------------------------------|-----------------------------------------------------------------|
 | Module                                                                                  | Description                          | Clojars artifact                             | Dependencies                                                    |
 |-----------------------------------------------------------------------------------------|--------------------------------------|----------------------------------------------|-----------------------------------------------------------------|
-| [cambium.core](https://github.com/cambium-clojure/cambium.core)                         | SLF4j based core API implementation  | `[cambium/cambium.core             "1.0.0"]` | [SLF4j](https://www.slf4j.org/) |
+| [cambium.core](https://github.com/cambium-clojure/cambium.core)                         | SLF4j based core API implementation  | `[cambium/cambium.core             "1.1.0"]` | [SLF4j](https://www.slf4j.org/) |
 | [cambium.codec-simple](https://github.com/cambium-clojure/cambium.codec-simple)         | Simple, non-nested codec             | `[cambium/cambium.codec-simple     "1.0.0"]` | |
 | [cambium.codec-cheshire](https://github.com/cambium-clojure/cambium.codec-cheshire)     | Cheshire based nesting-capable codec | `[cambium/cambium.codec-cheshire   "1.0.0"]` | [Cheshire](https://github.com/dakrone/cheshire)                 |
 
@@ -37,7 +37,7 @@ _**Cambium requires Clojure 1.6 or higher, Java 6 or higher.**_
 Include the following dependencies in your project:
 
 ```clojure
-[cambium/cambium.core         "1.0.0"]
+[cambium/cambium.core         "1.1.0"]
 [cambium/cambium.codec-simple "1.0.0"]
 [cambium/cambium.logback.core "0.4.4"]
 ```
@@ -97,7 +97,7 @@ $ lein run foo 10
 Include the following dependencies in your project:
 
 ```clojure
-[cambium/cambium.core           "1.0.0"]
+[cambium/cambium.core           "1.1.0"]
 [cambium/cambium.codec-cheshire "1.0.0"]
 [cambium/cambium.logback.json   "0.4.4"]
 ```
@@ -179,7 +179,7 @@ $ lein run foo 10
 
 ## License
 
-Copyright © 2017-2020 Shantanu Kumar
+Copyright © 2017-2020 [Shantanu Kumar](https://github.com/kumarshantanu)
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
