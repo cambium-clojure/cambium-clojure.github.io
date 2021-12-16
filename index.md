@@ -8,6 +8,8 @@ title: Cambium Home - Structured logging for Clojure
 _**Cambium requires Clojure 1.6 or higher, Java 6 or higher.**_
 
 
+_SECURITY-FIX: Upgrade `cambium.logback.*` to version 0.4.5 for [LOGBACK-1591](https://jira.qos.ch/browse/LOGBACK-1591) fix. [See more details.](http://mailman.qos.ch/pipermail/announce/2021/000164.html)_
+
 ## Latest release
 
 ### API
@@ -15,7 +17,7 @@ _**Cambium requires Clojure 1.6 or higher, Java 6 or higher.**_
 |-----------------------------------------------------------------------------------------|--------------------------------------|----------------------------------------------|-----------------------------------------------------------------|
 | Module                                                                                  | Description                          | Clojars artifact                             | Dependencies                                                    |
 |-----------------------------------------------------------------------------------------|--------------------------------------|----------------------------------------------|-----------------------------------------------------------------|
-| [cambium.core](https://github.com/cambium-clojure/cambium.core)                         | SLF4j based core API implementation  | `[cambium/cambium.core             "1.1.0"]` | [SLF4j](https://www.slf4j.org/) |
+| [cambium.core](https://github.com/cambium-clojure/cambium.core)                         | SLF4j based core API implementation  | `[cambium/cambium.core             "1.1.1"]` | [SLF4j](https://www.slf4j.org/) |
 | [cambium.codec-simple](https://github.com/cambium-clojure/cambium.codec-simple)         | Simple, non-nested codec             | `[cambium/cambium.codec-simple     "1.0.0"]` | |
 | [cambium.codec-cheshire](https://github.com/cambium-clojure/cambium.codec-cheshire)     | Cheshire based nesting-capable codec | `[cambium/cambium.codec-cheshire   "1.0.0"]` | [Cheshire](https://github.com/dakrone/cheshire)                 |
 
@@ -25,9 +27,9 @@ _**Cambium requires Clojure 1.6 or higher, Java 6 or higher.**_
 |-----------------------------------------------------------------------------------------|--------------------------------------|----------------------------------------------|-----------------------------------------------------------------|
 | Module                                                                                  | Description                          | Clojars artifact                             | Dependencies                                                    |
 |-----------------------------------------------------------------------------------------|--------------------------------------|----------------------------------------------|-----------------------------------------------------------------|
-| [cambium.logback.core](https://github.com/cambium-clojure/cambium.logback.core)         | Core Logback backend                 | `[cambium/cambium.logback.core     "0.4.4"]` | [Logback](https://logback.qos.ch/)                              |
-| [cambium.logback.json](https://github.com/cambium-clojure/cambium.logback.json)         | JSON Logback backend                 | `[cambium/cambium.logback.json     "0.4.4"]` | [Jackson](https://github.com/FasterXML/jackson)                 |
-| [cambium.logback.rabbitmq](https://github.com/cambium-clojure/cambium.logback.rabbitmq) | RabbitMQ appender for Logback        | `[cambium/cambium.logback.rabbitmq "0.4.4"]` | [RabbitMQ client](https://www.rabbitmq.com/java-client.html)    |
+| [cambium.logback.core](https://github.com/cambium-clojure/cambium.logback.core)         | Core Logback backend                 | `[cambium/cambium.logback.core     "0.4.5"]` | [Logback](https://logback.qos.ch/)                              |
+| [cambium.logback.json](https://github.com/cambium-clojure/cambium.logback.json)         | JSON Logback backend                 | `[cambium/cambium.logback.json     "0.4.5"]` | [Jackson](https://github.com/FasterXML/jackson)                 |
+| [cambium.logback.rabbitmq](https://github.com/cambium-clojure/cambium.logback.rabbitmq) | RabbitMQ appender for Logback        | `[cambium/cambium.logback.rabbitmq "0.4.5"]` | [RabbitMQ client](https://www.rabbitmq.com/java-client.html)    |
 
 
 ## Quickstart
@@ -37,9 +39,9 @@ _**Cambium requires Clojure 1.6 or higher, Java 6 or higher.**_
 Include the following dependencies in your project:
 
 ```clojure
-[cambium/cambium.core         "1.1.0"]
+[cambium/cambium.core         "1.1.1"]
 [cambium/cambium.codec-simple "1.0.0"]
-[cambium/cambium.logback.core "0.4.4"]
+[cambium/cambium.logback.core "0.4.5"]
 ```
 
 Then, create a file `resources/logback.xml` with the following content:
@@ -97,9 +99,9 @@ $ lein run foo 10
 Include the following dependencies in your project:
 
 ```clojure
-[cambium/cambium.core           "1.1.0"]
+[cambium/cambium.core           "1.1.1"]
 [cambium/cambium.codec-cheshire "1.0.0"]
-[cambium/cambium.logback.json   "0.4.4"]
+[cambium/cambium.logback.json   "0.4.5"]
 ```
 
 Create `resources/logback.xml` file in your project with the following content:
